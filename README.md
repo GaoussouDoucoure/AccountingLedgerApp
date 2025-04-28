@@ -1,4 +1,4 @@
-# Accounting Ledger Application
+# Gaoussou's Accounting Ledger Application
 A Java CLI application to track all financial transactions for businesses or personal use. Transactions are saved in a `transactions.csv` file.
 
 ## Features:
