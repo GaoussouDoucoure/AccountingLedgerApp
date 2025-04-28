@@ -6,7 +6,17 @@ public class Main {
                 D - Add Deposit
                 P - Make Payment (Debit)
                 L - Ledger
-                X - Exit the application
+                X - Exit the Application
+                """);
+    }
+    public void ledgerScreen(){
+        System.out.println("""
+                Ledger screen, choose an option to proceed:
+                A - Display All Entries
+                D - Deposits
+                P - Payments
+                R - Reports
+                H - Go back to Home Page
                 """);
     }
     public static void main(String[] args) {
