@@ -4,45 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void homeScreen(){
-        System.out.println("""
-                *************************************************
-                ***** WELCOME TO YOUR ACCOUNTING LEDGER APP *****
-                *************************************************
-                
-                Please choose an option to proceed:
-                D - Add Deposit
-                P - Make Payment (Debit)
-                L - Ledger
-                X - Exit the Application
-                """);
-    }
-    public static void ledgerScreen(){
-        System.out.println("""
-                ***** LEDGER SCREEN *****
-                Choose an option to proceed:
-                A - Display All Entries
-                D - Deposits
-                P - Payments
-                R - Reports
-                H - Go back to Home Page
-                X - Exit the Application
-                """);
-    }
-    public static void reportScreen(){
-        System.out.println("""
-                ***** REPORT SCREEN *****
-                Choose an option to proceed:
-                1 - Month To Date
-                2 - Previous Month
-                3 - Year To Date
-                4 - Previous Year
-                5 - Search by Vendor - prompt the user for the vendor name
-                    and display all entries for that vendor
-                6 - Go back to Ledger Screen
-                0 - Exit the Application
-                """);
-    }
     public static void main(String[] args) {
         ArrayList<Transaction> transaction = new ArrayList<>();
         File file = new File("transactions.csv");
@@ -59,7 +20,7 @@ public class Main {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        homeScreen();
+        Screens.homeScreen();
         Scanner sc = new Scanner(System.in);
         String userInput = "";
         while (!userInput.equalsIgnoreCase("X")) { // start of WHILE loop for Home Screen
@@ -72,20 +33,20 @@ public class Main {
                 String deposit = sc.nextLine();
                 // TODO say deposit successful, you're back to the previous screen
                 System.out.println("Your deposit is made. Now you are back to the previous Screen.\n");
-                homeScreen();
+                Screens.homeScreen();
             } else if (userInput.equalsIgnoreCase("P")) {
                 System.out.println("Enter a payment (e.g. 2023-04-15|10:13:25|ergonomic keyboard|Amazon|-89.50:");
                 String deposit = sc.nextLine();
                 // TODO say payment successful, you're back to the previous screen
                 System.out.println("Your payment is made. Now you are back to the previous Screen.\n");
-                homeScreen();
+                Screens.homeScreen();
             } else if (userInput.equalsIgnoreCase("L")) {
-                ledgerScreen();
+                Screens.ledgerScreen();
                 userInput = "";
                 while (!userInput.equalsIgnoreCase("H")) {   // start of WHILE loop for Ledger Screen
                     userInput = sc.nextLine();
                     if (userInput.equalsIgnoreCase("H")) {   // start of Conditionals Ledger Screen
-                        homeScreen();
+                        Screens.homeScreen();
                         break;
                     } else if (userInput.equalsIgnoreCase("A")) {
                         System.out.println("Here is all the entries");
@@ -103,7 +64,7 @@ public class Main {
                         // Show Ledger Screen since they will go back to it with "break" below
                         break;
                     } else if (userInput.equalsIgnoreCase("R")) {
-                        reportScreen();
+                        Screens.reportScreen();
                         int command = -1;
                         while (command != 6) {   // start of WHILE loop for Report Screen
                             command = sc.nextInt();
@@ -134,7 +95,7 @@ public class Main {
                                 // Show Report Screen since they will go back to it with "break" below
                                 break;
                             } else if (command == 6) {
-                                ledgerScreen();
+                                Screens.ledgerScreen();
                                 break;
                             } else if (command == 0) {
                                 System.out.println("You have exited out of the application. See you next time :)");
