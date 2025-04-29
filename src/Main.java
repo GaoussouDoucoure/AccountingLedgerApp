@@ -1,7 +1,15 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
-    public void homeScreen(){
+    public static void homeScreen(){
         System.out.println("""
-                Welcome to your Accounting Ledger App!
+                *************************************************
+                ***** WELCOME TO YOUR ACCOUNTING LEDGER APP *****
+                *************************************************
+                
                 Please choose an option to proceed:
                 D - Add Deposit
                 P - Make Payment (Debit)
@@ -9,9 +17,10 @@ public class Main {
                 X - Exit the Application
                 """);
     }
-    public void ledgerScreen(){
+    public static void ledgerScreen(){
         System.out.println("""
-                Ledger Screen, choose an option to proceed:
+                ***** LEDGER SCREEN *****
+                Choose an option to proceed:
                 A - Display All Entries
                 D - Deposits
                 P - Payments
@@ -19,9 +28,10 @@ public class Main {
                 H - Go back to Home Page
                 """);
     }
-    public void reportScreen(){
+    public static void reportScreen(){
         System.out.println("""
-                Choose an option to filter:
+                ***** REPORT SCREEN *****
+                Choose an option to proceed:
                 1 - Month To Date
                 2 - Previous Month
                 3 - Year To Date
@@ -33,5 +43,8 @@ public class Main {
     }
     public static void main(String[] args) {
 
+        homeScreen();
+        ledgerScreen();
+        reportScreen();
     }
 }
