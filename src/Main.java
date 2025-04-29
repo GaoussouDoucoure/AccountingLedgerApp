@@ -42,9 +42,19 @@ public class Main {
                 """);
     }
     public static void main(String[] args) {
-
-        homeScreen();
-        ledgerScreen();
-        reportScreen();
+        ArrayList<Transaction> transaction = new ArrayList<>();
+        File file = new File("transactions.csv");
+        try {
+            Scanner reader = new Scanner(file);
+            while(reader.hasNextLine()){
+                String line = reader.nextLine();
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+//        homeScreen();
+//        ledgerScreen();
+//        reportScreen();
     }
 }
