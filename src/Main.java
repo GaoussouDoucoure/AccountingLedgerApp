@@ -36,10 +36,24 @@ public class Main {
                 CSVHandler.writeTransaction(t);
             } else if (userInput.equalsIgnoreCase("P")) {
                 // Process payment here
-                System.out.println("Enter a payment (e.g. 2023-04-15|10:13:25|ergonomic keyboard|Amazon|-89.50): ");
-                String paymentInput = sc.nextLine();
-                // TODO: Process payment and add to ledger.
-                System.out.println("Your payment was successful. Returning to Home Screen.\n");
+                System.out.print("Enter payment date (YYYY-MM-DD): ");
+                String date = sc.nextLine().trim();
+
+                System.out.print("Enter time (HH:MM:SS): ");
+                String time = sc.nextLine().trim();
+
+                System.out.print("Enter description: ");
+                String description = sc.nextLine().trim();
+
+                System.out.print("Enter vendor: ");
+                String vendor = sc.nextLine().trim();
+
+                System.out.print("Enter amount (enter as positive, it will be recorded as a negative value): ");
+                double amount = Double.parseDouble(sc.nextLine().trim());
+                amount = -Math.abs(amount);  // to ensure payment is recorded as a negative value by turning the absolute value of entered number
+
+                Transaction t = new Transaction(date, time, description, vendor, amount);
+                CSVHandler.writeTransaction(t);
             } else if (userInput.equalsIgnoreCase("L")) {
                 // Enter Ledger Screen: start inner loop
                 String ledgerInput = "";
