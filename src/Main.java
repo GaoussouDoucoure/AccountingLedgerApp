@@ -16,11 +16,24 @@ public class Main {
                 break;
             } else if (userInput.equalsIgnoreCase("D")) {
                 // Process deposit here
-                System.out.println("Enter a deposit (e.g. 2023-04-15|11:15:00|Invoice 1001 paid|Joe|1500.00): ");
-                String depositInput = sc.nextLine();
-                // TODO: Process deposit and add to ledger.
-                System.out.println("Your deposit was successful. Returning to Home Screen.\n");
-                // After the action, the loop restarts and re-displays the home screen.
+                System.out.print("Enter deposit date (YYYY-MM-DD): ");
+                String date = sc.nextLine().trim();
+
+                System.out.print("Enter time (HH:MM:SS): ");
+                String time = sc.nextLine().trim();
+
+
+                System.out.print("Enter description: ");
+                String description = sc.nextLine().trim();
+
+                System.out.print("Enter vendor: ");
+                String vendor = sc.nextLine().trim();
+
+                System.out.print("Enter amount (positive value expected): ");
+                double amount = Double.parseDouble(sc.nextLine().trim());
+
+                Transaction t = new Transaction(date, time, description, vendor, amount);
+                CSVHandler.writeTransaction(t);
             } else if (userInput.equalsIgnoreCase("P")) {
                 // Process payment here
                 System.out.println("Enter a payment (e.g. 2023-04-15|10:13:25|ergonomic keyboard|Amazon|-89.50): ");
