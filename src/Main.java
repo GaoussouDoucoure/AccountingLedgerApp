@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +14,7 @@ public class Main {
             userInput = sc.nextLine().trim();
 
             if (userInput.equalsIgnoreCase("X")) {
-                System.out.println("You have exited the application. See you next time!");
+                System.out.println("Exiting the application... See you next time!");
                 break;
             } else if (userInput.equalsIgnoreCase("D")) {
                 // Process deposit here
@@ -21,7 +23,6 @@ public class Main {
 
                 System.out.print("Enter time (HH:MM:SS): ");
                 String time = sc.nextLine().trim();
-
 
                 System.out.print("Enter description: ");
                 String description = sc.nextLine().trim();
@@ -67,18 +68,30 @@ public class Main {
                         System.out.println("Returning to Home Screen...\n");
                         break;  // Breaks out of the ledger loop back to the Home Screen.
                     } else if (ledgerInput.equalsIgnoreCase("A")) {
-                        System.out.println("Displaying all entries...");
-                        // TODO: Display all ledger entries.
-                        // Re-display the ledger screen after completing the task.
-                        continue;
+                        ArrayList<Transaction> transactions = CSVHandler.readTransactions();
+                        System.out.println("----- All Transactions -----");
+                        for (Transaction t : transactions) {
+                            System.out.println(t);
+                        }
+
                     } else if (ledgerInput.equalsIgnoreCase("D")) {
-                        System.out.println("Displaying all deposits...");
-                        // TODO: Display deposit-only entries.
-                        continue;
+                        ArrayList<Transaction> transactions = CSVHandler.readTransactions();
+                        System.out.println("----- Deposits -----");
+                        for (Transaction t : transactions) {
+                            if (t.getAmount() > 0) {
+                                System.out.println(t);
+                            }
+                        }
+
                     } else if (ledgerInput.equalsIgnoreCase("P")) {
-                        System.out.println("Displaying all payments...");
-                        // TODO: Display payment-only entries.
-                        continue;
+                        ArrayList<Transaction> transactions = CSVHandler.readTransactions();
+                        System.out.println("----- Payments -----");
+                        for (Transaction t : transactions) {
+                            if (t.getAmount() < 0) {
+                                System.out.println(t);
+                            }
+                        }
+
                     } else if (ledgerInput.equalsIgnoreCase("R")) {
                         // Enter Report Screen: another inner loop
                         String reportInput = "";
@@ -87,40 +100,76 @@ public class Main {
                             System.out.print("Enter a report option: ");
                             reportInput = sc.nextLine().trim();
 
-                            if (reportInput.equals("1")) {
-                                System.out.println("Month To Date Report...");
-                                // TODO: Display Month To Date report.
-                                continue;
-                            } else if (reportInput.equals("2")) {
-                                System.out.println("Previous Month Report...");
-                                // TODO: Display Previous Month report.
-                                continue;
-                            } else if (reportInput.equals("3")) {
-                                System.out.println("Year To Date Report...");
-                                // TODO: Display Year To Date report.
-                                continue;
-                            } else if (reportInput.equals("4")) {
-                                System.out.println("Previous Year Report...");
-                                // TODO: Display Previous Year report.
-                                continue;
-                            } else if (reportInput.equals("5")) {
-                                System.out.println("Search by Vendor...");
-                                // TODO: Prompt user for vendor name and display relevant entries.
-                                continue;
+                            if (reportInput.equals("1")) {   // Month To Date Report
+                                LocalDate today = LocalDate.now();
+                                String yearMonth = today.toString().substring(0, 7);
+                                ArrayList<Transaction> transactions = CSVHandler.readTransactions();
+                                System.out.println("----- Month To Date Report -----");
+                                for (Transaction t : transactions) {
+                                    if (t.getDate().startsWith(yearMonth)) {
+                                        System.out.println(t);
+                                    }
+                                }
+
+                            } else if (reportInput.equals("2")) {   // Previous Month Report
+                                LocalDate today = LocalDate.now();
+                                LocalDate prevMonth = today.minusMonths(1);
+                                String prevYearMonth = prevMonth.toString().substring(0, 7);
+                                ArrayList<Transaction> transactions = CSVHandler.readTransactions();
+                                System.out.println("----- Previous Month Report -----");
+                                for (Transaction t : transactions) {
+                                    if (t.getDate().startsWith(prevYearMonth)) {
+                                        System.out.println(t);
+                                    }
+                                }
+
+                            } else if (reportInput.equals("3")) { // Year To Date Report
+                                LocalDate today = LocalDate.now();
+                                String currentYear = today.toString().substring(0, 4);
+                                ArrayList<Transaction> transactions = CSVHandler.readTransactions();
+                                System.out.println("----- Year To Date Report -----");
+                                for (Transaction t : transactions) {
+                                    if (t.getDate().startsWith(currentYear)) {
+                                        System.out.println(t);
+                                    }
+                                }
+
+                            } else if (reportInput.equals("4")) { // Previous Year Report
+                                LocalDate today = LocalDate.now();
+                                int previousYear = Integer.parseInt(today.toString().substring(0, 4)) - 1;
+                                String prevYearStr = String.valueOf(previousYear);
+                                ArrayList<Transaction> transactions = CSVHandler.readTransactions();
+                                System.out.println("----- Previous Year Report -----");
+                                for (Transaction t : transactions) {
+                                    if (t.getDate().startsWith(prevYearStr)) {
+                                        System.out.println(t);
+                                    }
+                                }
+
+                            } else if (reportInput.equals("5")) {   // Search by Vendor
+                                System.out.print("Enter vendor name to search: ");
+                                String vendorName = sc.nextLine().trim();
+                                ArrayList<Transaction> transactions = CSVHandler.readTransactions();
+                                System.out.println("----- Entries for Vendor: " + vendorName + " -----");
+                                for (Transaction t : transactions) {
+                                    if (t.getVendor().equalsIgnoreCase(vendorName)) {
+                                        System.out.println(t);
+                                    }
+                                }
+
                             } else if (reportInput.equals("6")) {
                                 System.out.println("Returning to Ledger Screen...\n");
                                 break;  // Exit the report loop back to the ledger screen.
                             } else if (reportInput.equals("0")) {
-                                System.out.println("Exiting application. Goodbye!");
+                                System.out.println("Exiting the application... See you next time!");
                                 return;  // Exit the entire application.
                             } else {
                                 System.out.printf("You entered an invalid report option: %s. Please try again!\n", reportInput);
                             }
                         }
-                        // After exiting the report loop, continue with the ledger loop.
-                        continue;
+
                     } else if (ledgerInput.equalsIgnoreCase("X")) {
-                        System.out.println("Exiting application. Goodbye!");
+                        System.out.println("Exiting the application... See you next time!");
                         return;   // Exit the entire application.
                     } else {
                         System.out.printf("You entered an invalid ledger option: %s. Please try again!\n", ledgerInput);
