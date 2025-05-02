@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,11 +19,13 @@ public class Main {
                 break;
             } else if (userInput.equalsIgnoreCase("D")) {
                 // Process deposit here
-                System.out.print("Enter deposit date (YYYY-MM-DD): ");
-                String date = sc.nextLine().trim();
+                System.out.print("Enter deposit date (YYYY-MM-DD, press Enter for today's date): ");
+                String dateInput = sc.nextLine().trim();
+                String date = dateInput.isEmpty() ? LocalDate.now().toString() : dateInput;
 
-                System.out.print("Enter time (HH:MM:SS): ");
-                String time = sc.nextLine().trim();
+                System.out.print("Enter time (HH:MM:SS, press Enter for current time): ");
+                String timeInput = sc.nextLine().trim();
+                String time = timeInput.isEmpty() ? LocalTime.now().withNano(0).toString() : timeInput;
 
                 System.out.print("Enter description: ");
                 String description = sc.nextLine().trim();
@@ -37,11 +40,13 @@ public class Main {
                 CSVHandler.writeTransaction(t);
             } else if (userInput.equalsIgnoreCase("P")) {
                 // Process payment here
-                System.out.print("Enter payment date (YYYY-MM-DD): ");
-                String date = sc.nextLine().trim();
+                System.out.print("Enter payment date (YYYY-MM-DD, press Enter for today's date): ");
+                String dateInput = sc.nextLine().trim();
+                String date = dateInput.isEmpty() ? LocalDate.now().toString() : dateInput;
 
-                System.out.print("Enter time (HH:MM:SS): ");
-                String time = sc.nextLine().trim();
+                System.out.print("Enter time (HH:MM:SS, press Enter for current time): ");
+                String timeInput = sc.nextLine().trim();
+                String time = timeInput.isEmpty() ? LocalTime.now().withNano(0).toString() : timeInput;
 
                 System.out.print("Enter description: ");
                 String description = sc.nextLine().trim();
