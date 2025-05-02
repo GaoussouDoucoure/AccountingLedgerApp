@@ -75,6 +75,9 @@ public class Main {
                     } else if (ledgerInput.equalsIgnoreCase("A")) {
                         ArrayList<Transaction> transactions = CSVHandler.readTransactions();
                         System.out.println("----- All Transactions -----");
+                        System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
+                                "Date", "Time", "Description", "Vendor", "Amount");
+                        System.out.println("----------------------------------------------------------------------------------------");
                         for (Transaction t : transactions) {
                             System.out.println(t);
                         }
@@ -82,6 +85,9 @@ public class Main {
                     } else if (ledgerInput.equalsIgnoreCase("D")) {
                         ArrayList<Transaction> transactions = CSVHandler.readTransactions();
                         System.out.println("----- Deposits -----");
+                        System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
+                                "Date", "Time", "Description", "Vendor", "Amount");
+                        System.out.println("----------------------------------------------------------------------------------------");
                         for (Transaction t : transactions) {
                             if (t.getAmount() > 0) {
                                 System.out.println(t);
@@ -91,6 +97,9 @@ public class Main {
                     } else if (ledgerInput.equalsIgnoreCase("P")) {
                         ArrayList<Transaction> transactions = CSVHandler.readTransactions();
                         System.out.println("----- Payments -----");
+                        System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
+                                "Date", "Time", "Description", "Vendor", "Amount");
+                        System.out.println("----------------------------------------------------------------------------------------");
                         for (Transaction t : transactions) {
                             if (t.getAmount() < 0) {
                                 System.out.println(t);
@@ -110,6 +119,9 @@ public class Main {
                                 String yearMonth = today.toString().substring(0, 7);
                                 ArrayList<Transaction> transactions = CSVHandler.readTransactions();
                                 System.out.println("----- Month To Date Report -----");
+                                System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
+                                        "Date", "Time", "Description", "Vendor", "Amount");
+                                System.out.println("----------------------------------------------------------------------------------------");
                                 for (Transaction t : transactions) {
                                     if (t.getDate().startsWith(yearMonth)) {
                                         System.out.println(t);
@@ -122,6 +134,9 @@ public class Main {
                                 String prevYearMonth = prevMonth.toString().substring(0, 7);
                                 ArrayList<Transaction> transactions = CSVHandler.readTransactions();
                                 System.out.println("----- Previous Month Report -----");
+                                System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
+                                        "Date", "Time", "Description", "Vendor", "Amount");
+                                System.out.println("----------------------------------------------------------------------------------------");
                                 for (Transaction t : transactions) {
                                     if (t.getDate().startsWith(prevYearMonth)) {
                                         System.out.println(t);
@@ -133,6 +148,9 @@ public class Main {
                                 String currentYear = today.toString().substring(0, 4);
                                 ArrayList<Transaction> transactions = CSVHandler.readTransactions();
                                 System.out.println("----- Year To Date Report -----");
+                                System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
+                                        "Date", "Time", "Description", "Vendor", "Amount");
+                                System.out.println("----------------------------------------------------------------------------------------");
                                 for (Transaction t : transactions) {
                                     if (t.getDate().startsWith(currentYear)) {
                                         System.out.println(t);
@@ -145,6 +163,9 @@ public class Main {
                                 String prevYearStr = String.valueOf(previousYear);
                                 ArrayList<Transaction> transactions = CSVHandler.readTransactions();
                                 System.out.println("----- Previous Year Report -----");
+                                System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
+                                        "Date", "Time", "Description", "Vendor", "Amount");
+                                System.out.println("----------------------------------------------------------------------------------------");
                                 for (Transaction t : transactions) {
                                     if (t.getDate().startsWith(prevYearStr)) {
                                         System.out.println(t);
@@ -156,6 +177,9 @@ public class Main {
                                 String vendorName = sc.nextLine().trim();
                                 ArrayList<Transaction> transactions = CSVHandler.readTransactions();
                                 System.out.println("----- Entries for Vendor: " + vendorName + " -----");
+                                System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
+                                        "Date", "Time", "Description", "Vendor", "Amount");
+                                System.out.println("----------------------------------------------------------------------------------------");
                                 for (Transaction t : transactions) {
                                     if (t.getVendor().equalsIgnoreCase(vendorName)) {
                                         System.out.println(t);

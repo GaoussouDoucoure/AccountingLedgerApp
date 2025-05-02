@@ -55,11 +55,12 @@ public class Transaction {
     public String toString() {
         DecimalFormat df = new DecimalFormat("0.00");
         // Using fixed-width for each field:
-        return String.format("%-18s | %-14s | %-38s | %-28s | %19s",
-                "Date: " + date,
-                "Time: " + time,
-                "Description: " + description,
-                "Vendor: " + vendor,
-                "Amount: $" + df.format(amount));
+        // %-12s for date, %-8s for time, %-25s for description, %-20s for vendor, and %10s for amount.
+        return String.format("%-12s | %-8s | %-25s | %-20s | %10s",
+                date,
+                time,
+                description,
+                vendor,
+                "$" + df.format(amount));
     }
 }
