@@ -32,8 +32,7 @@ public class Screens {
                 2 - Previous Month
                 3 - Year To Date
                 4 - Previous Year
-                5 - Search by Vendor - prompt the user for the vendor name
-                    and display all entries for that vendor
+                5 - Search by Vendor
                 6 - Go back to Ledger Screen
                 0 - Exit the Application
                 """);
