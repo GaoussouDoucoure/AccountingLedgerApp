@@ -58,7 +58,7 @@ public class CSVHandler {
                     transaction.getAmount());
             writer.write(line); // this will write the inputs
             writer.newLine();  // this should create a new empty line at the end
-            System.out.println("Transaction added successfully.");
+            System.out.println("Transaction added successfully.\n");
         } catch (IOException e) {
             System.out.println("Error writing to CSV file: " + e.getMessage());
         }
