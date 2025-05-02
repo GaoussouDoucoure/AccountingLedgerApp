@@ -40,7 +40,7 @@ public class CSVHandler {
                     transactions.add(transaction);
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException e) {   //Error handling in case if Reading fails
             System.out.println("Error reading CSV file: " + e.getMessage());
         }
         return transactions;
@@ -59,7 +59,7 @@ public class CSVHandler {
             writer.write(line); // this will write the inputs
             writer.newLine();  // this should create a new empty line at the end
             System.out.println("Transaction added successfully.\n");
-        } catch (IOException e) {
+        } catch (IOException e) {   //Error handling in case if Writing fails
             System.out.println("Error writing to CSV file: " + e.getMessage());
         }
     }

@@ -169,7 +169,7 @@ public class Main {
                                 System.out.println("Exiting the application... See you next time!");
                                 return;  // Exit the entire application.
                             } else {
-                                System.out.printf("You entered an invalid report option: %s. Please try again!\n", reportInput);
+                                System.out.printf("You entered an invalid report option: %s. Please try again!\n", reportInput);  //Error handling in case the user input bad command in the Report Section
                             }
                         }
 
@@ -177,12 +177,12 @@ public class Main {
                         System.out.println("Exiting the application... See you next time!");
                         return;   // Exit the entire application.
                     } else {
-                        System.out.printf("You entered an invalid ledger option: %s. Please try again!\n", ledgerInput);
+                        System.out.printf("You entered an invalid ledger option: %s. Please try again!\n", ledgerInput); //Error handling in case the user input bad command in the Ledger Section
                     }
                 }  // End of ledger inner loop.
                 // After breaking out of the ledger loop, the outer home loop will re-display the Home Screen.
             } else {
-                System.out.printf("You entered an invalid option: %s. Please try again!\n", userInput);
+                System.out.printf("You entered an invalid option: %s. Please try again!\n", userInput);   //Error handling in case the user input bad command in the Home Section
             }
         }  // End of Home Screen loop.
 
