@@ -12,7 +12,7 @@ date|time|description|vendor|amount
 2024-04-18|09:45:20|Gift Purchase|Macy's|-60.00
 2024-05-05|13:10:00|Dinner|Olive Garden|-45.00
 2024-05-25|17:55:12|Salary|Employer|1200.00
-2024-06-15|10:30:30|Electricity Bill|Pacific Gas & Electric|-100.00
+2024-06-15|10:30:30|Electricity Bill|Puget Sound Energy|-100.00
 2024-06-15|10:45:05|Freelance Payment|Upwork|200.00
 2024-07-04|14:00:00|Tax Refund|IRS|800.00
 2024-07-04|14:30:30|Independence Day Bonus|Employer|250.00
@@ -35,4 +35,4 @@ date|time|description|vendor|amount
 2025-05-01|23:14:48|Office Desk|Costco|-126.47
 2025-05-01|23:20:28|Gas|Chevron|-72.19
 2025-05-01|23:21:38|Birthday Gift|CashApp|100.00
-2025-05-01|23:22:52|Coaching Session|CashApp|120.00
+2025-05-01|23:22:52|Coaching Session|CashApp|120.0

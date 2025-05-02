@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Transaction {
     private String date;
     private String time;
@@ -51,6 +53,13 @@ public class Transaction {
     // toString method to represent the transaction details
     @Override
     public String toString() {
-        return date + '|' + time + '|' + description + '|' + vendor + '|' + amount;
+        DecimalFormat df = new DecimalFormat("0.00");
+        // Using fixed-width for each field:
+        return String.format("%-18s | %-14s | %-38s | %-28s | %19s",
+                "Date: " + date,
+                "Time: " + time,
+                "Description: " + description,
+                "Vendor: " + vendor,
+                "Amount: $" + df.format(amount));
     }
 }
