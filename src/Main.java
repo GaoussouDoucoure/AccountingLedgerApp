@@ -74,7 +74,7 @@ public class Main {
                         break;  // Breaks out of the ledger loop back to the Home Screen.
                     } else if (ledgerInput.equalsIgnoreCase("A")) {
                         ArrayList<Transaction> transactions = CSVHandler.readTransactions();
-                        System.out.println("----- All Transactions -----");
+                        System.out.println(">>>>> All Transactions <<<<<");
                         System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
                                 "Date", "Time", "Description", "Vendor", "Amount");
                         System.out.println("----------------------------------------------------------------------------------------");
@@ -84,7 +84,7 @@ public class Main {
 
                     } else if (ledgerInput.equalsIgnoreCase("D")) {
                         ArrayList<Transaction> transactions = CSVHandler.readTransactions();
-                        System.out.println("----- Deposits -----");
+                        System.out.println(">>>>> Deposits <<<<<");
                         System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
                                 "Date", "Time", "Description", "Vendor", "Amount");
                         System.out.println("----------------------------------------------------------------------------------------");
@@ -96,7 +96,7 @@ public class Main {
 
                     } else if (ledgerInput.equalsIgnoreCase("P")) {
                         ArrayList<Transaction> transactions = CSVHandler.readTransactions();
-                        System.out.println("----- Payments -----");
+                        System.out.println(">>>>> Payments <<<<<");
                         System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
                                 "Date", "Time", "Description", "Vendor", "Amount");
                         System.out.println("----------------------------------------------------------------------------------------");
@@ -118,7 +118,7 @@ public class Main {
                                 LocalDate today = LocalDate.now();
                                 String yearMonth = today.toString().substring(0, 7);
                                 ArrayList<Transaction> transactions = CSVHandler.readTransactions();
-                                System.out.println("----- Month To Date Report -----");
+                                System.out.println(">>>>> Month To Date Report <<<<<");
                                 System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
                                         "Date", "Time", "Description", "Vendor", "Amount");
                                 System.out.println("----------------------------------------------------------------------------------------");
@@ -133,7 +133,7 @@ public class Main {
                                 LocalDate prevMonth = today.minusMonths(1);
                                 String prevYearMonth = prevMonth.toString().substring(0, 7);
                                 ArrayList<Transaction> transactions = CSVHandler.readTransactions();
-                                System.out.println("----- Previous Month Report -----");
+                                System.out.println(">>>>> Previous Month Report <<<<<");
                                 System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
                                         "Date", "Time", "Description", "Vendor", "Amount");
                                 System.out.println("----------------------------------------------------------------------------------------");
@@ -147,7 +147,7 @@ public class Main {
                                 LocalDate today = LocalDate.now();
                                 String currentYear = today.toString().substring(0, 4);
                                 ArrayList<Transaction> transactions = CSVHandler.readTransactions();
-                                System.out.println("----- Year To Date Report -----");
+                                System.out.println(">>>>> Year To Date Report <<<<<");
                                 System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
                                         "Date", "Time", "Description", "Vendor", "Amount");
                                 System.out.println("----------------------------------------------------------------------------------------");
@@ -162,7 +162,7 @@ public class Main {
                                 int previousYear = Integer.parseInt(today.toString().substring(0, 4)) - 1;
                                 String prevYearStr = String.valueOf(previousYear);
                                 ArrayList<Transaction> transactions = CSVHandler.readTransactions();
-                                System.out.println("----- Previous Year Report -----");
+                                System.out.println(">>>>> Previous Year Report <<<<<");
                                 System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
                                         "Date", "Time", "Description", "Vendor", "Amount");
                                 System.out.println("----------------------------------------------------------------------------------------");
@@ -176,7 +176,7 @@ public class Main {
                                 System.out.print("Enter vendor name to search: ");
                                 String vendorName = sc.nextLine().trim();
                                 ArrayList<Transaction> transactions = CSVHandler.readTransactions();
-                                System.out.println("----- Entries for Vendor: " + vendorName + " -----");
+                                System.out.println(">>>>> Entries for Vendor: " + vendorName + " <<<<<");
                                 System.out.printf("%-12s | %-8s | %-25s | %-20s | %10s\n",
                                         "Date", "Time", "Description", "Vendor", "Amount");
                                 System.out.println("----------------------------------------------------------------------------------------");

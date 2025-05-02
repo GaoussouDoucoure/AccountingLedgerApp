@@ -7,7 +7,7 @@ public class Screens {
                 
                 Please choose an option to proceed:
                 D - Add Deposit
-                P - Make Payment (Debit)
+                P - Make Payment
                 L - Ledger
                 X - Exit the Application
                 """);
